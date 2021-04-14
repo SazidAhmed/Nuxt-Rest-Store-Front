@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <h2 class="text-gray-500 text-4xl font-semi-bold uppercase">Product id : {{ $route.params.id }}</h2>
+            <h2 class="text-gray-500 text-4xl font-semi-bold uppercase">Product id : {{ $route.params.slug }}</h2>
         </header>
         <!-- items -->
         <div>
@@ -33,8 +33,6 @@ export default {
     return{
       product:'',
       quantity:1,
-      red:"red",
-      red2:"red2"
     }
   },
   mounted(){
@@ -42,11 +40,8 @@ export default {
   },
   methods:{
     getProduct(){
-      // const category_slug = this.$route.params.category_slug
-      // const product_slug = this.$route.params.product_slug
-
-      const category_slug = red
-      const product_slug = red2
+      const category_slug = this.$route.params.category_slug
+      const product_slug = this.$route.params.product_slug
 
       const loadProduct = async () =>{
             try{
@@ -55,7 +50,7 @@ export default {
                 setTimeout(resolve, 1000)
                 })
                 
-                let data = await fetch(`http://127.0.0.1:8000/api/v1/${category_slug}/${product_slug}`)
+                let data = await fetch(`http://127.0.0.1:8000/api/v1/products/red/red2`)
                 if(!data.ok){
                 throw Error('No Data Available')
                 }

@@ -1,0 +1,10 @@
+vscode plugin - tailwind css intellisense (Brad Cornes)
+
+//tailwind config
+npx tailwindcss init --full 
+
+//tailwind blank config
+npx tailwindcss init 
+
+//tailwind processor
+npm run build-css

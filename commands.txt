@@ -8,3 +8,5 @@ npx tailwindcss init
 
 //tailwind processor
 npm run build-css
+
+npm i nuxt-vuex-localstorage

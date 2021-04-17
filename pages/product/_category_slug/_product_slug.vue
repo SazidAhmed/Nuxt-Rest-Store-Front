@@ -1,10 +1,10 @@
 <template>
     <div>
         <header>
-            <h2 class="text-gray-500 text-4xl font-semi-bold uppercase">category_slug: {{ $route.params.category_slug }} - product_slug:{{ $route.params.product_slug }}</h2>
+            <h2 class="text-gray-500 text-4xl font-semi-bold uppercase">{{ product.name }}</h2>
         </header>
         <!-- items -->
-        <div>
+        <div v-if="product">
           <h4 class="font-bold pt-2 border-b border-gray-200"></h4>
           <div class="grid lg:grid-cols-6 mt-2">
             <div class="md:col-span-3">
@@ -30,6 +30,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div v-else>
+          <Spinner />
         </div>
     </div>
 </template>

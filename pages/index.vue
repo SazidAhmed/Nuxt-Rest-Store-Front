@@ -4,7 +4,7 @@
             <h2 class="text-gray-500 text-4xl font-semi-bold uppercase">Home</h2>
         </header>
         <!-- items -->
-        <div>
+        <div v-if="latestProducts.length">
             <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">Latest Products</h4>
             <div class="mt-8 grid lg:grid-cols-4 gap-10"> 
             <!-- cards -->
@@ -36,6 +36,9 @@
             <div class="flex justify-center mt-5">
                 <div class="btn bg-secondary-100 text-secondary-200 hover:shadow-inner hover:bg-primary hover:text-white transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-500">Load More...</div>
             </div>
+        </div>
+        <div v-else>
+          <Spinner />
         </div>
     </div>
 </template>

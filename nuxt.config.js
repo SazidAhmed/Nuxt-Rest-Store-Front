@@ -45,11 +45,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-vuex-localstorage',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
+
+  ssr: false, // Disable Server Side rendering
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://127.0.0.1:8000/'

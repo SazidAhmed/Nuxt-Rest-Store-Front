@@ -3,6 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      transformOrigin: {
+        "0": "0%",
+      },
+      zIndex: {
+        "-1": "-1",
+      },
       colors: {
         primary: '#10b981',
         secondary: {
@@ -12,11 +18,11 @@ module.exports = {
       },
       fontFamily: {
         body: ['Nunito']
-      }
+      },
     },
   },
   variants: {
-    extend: {},
+    borderColor: ['responsive', 'hover', 'focus', 'focus-within'],
   },
   plugins: [
   ],

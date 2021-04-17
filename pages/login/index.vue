@@ -1,53 +1,43 @@
 <template>
   <div>
-    <div class="min-h-screen mt-20 flex justify-center">
-      <div class="max-w-md w-full space-y-8">
-        <div>
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
+    <div class="min-h-screen flex flex-col items-center justify-center">
+      <!-- card -->
+      <div class="flex flex-col bg-white shadow-xl px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
+        <div class="self-center font-medium text-xl sm:text-2xl uppercase text-gray-800">Welcome</div>
+        <div class="relative mt-8 h-px bg-gray-200">
+          <div class="absolute left-0 top-0 flex justify-center w-full -mt-2">
+            <span class="bg-white px-2 text-xs text-gray-500 uppercase">Login With Email</span>
+          </div>
         </div>
-        <form class="mt-8 space-y-6" action="#" method="POST">
-          <input type="hidden" name="remember" value="true">
-          <div class="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label for="email-address" class="sr-only">Email address</label>
-              <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+        <div class="mt-5">
+          <form class="max-w-sm mx-auto overflow-hidden p-6 space-y-5">
+            <div class="outline rounded-xl relative border-2 focus-within:border-blue-500">
+              <input type="email" name="email" placeholder=" " class="block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent" />
+              <label for="email" class="absolute top-0 text-lg bg-white ml-2 p-2 z-1 duration-300 origin-0">Email</label>
             </div>
-            <div>
-              <label for="password" class="sr-only">Password</label>
-              <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+            <div class="outline rounded-xl relative border-2 focus-within:border-blue-500">
+              <input type="password" name="password" placeholder=" " class="block p-2 w-full text-lg appearance-none focus:outline-none bg-transparent" />
+              <label for="password" class="absolute top-0 text-lg bg-white ml-2 p-2 z-1 duration-300 origin-0">Password</label>
             </div>
-          </div>
-
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-              <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
-            </div>
-
-            <div class="text-sm">
-              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-                Forgot your password?
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                <!-- Heroicon name: solid/lock-closed -->
-                <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                </svg>
-              </span>
-              Sign in
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div class="flex justify-end mr-7 mb-5">
+          <a href="#" class="inlinw-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Reset Password Here</a>
+        </div>
+        <div class="flex w-full">
+          <button class="flex justify-center items-center w-full focus:outline-none py-1 text-white text-sm sm:text-base bg-green-400 hover:bg-green-500 rounded-xl transition duration-100 ease-in">
+            <span class="text-lg uppercase">Login</span>
+            <svg class="w-5 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+          </button>
+        </div>
+        <div class="flex items-center justify-center mt-5">
+          <a href="" class=" text-blue-500 hover:text-blue-700 ">
+            <span class="text-xs uppercase">Register Here</span>
+            <svg class="w-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          </a>
+        </div>
       </div>
+      <!-- card end-->
     </div>
   </div>
 </template>

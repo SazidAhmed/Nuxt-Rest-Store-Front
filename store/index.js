@@ -1,6 +1,6 @@
 export const state = () => ({
     cart:{
-        items:[],
+      items:[],
     },
     isAuthenticated: false,
     token: '',

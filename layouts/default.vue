@@ -24,7 +24,7 @@
                   </li>
                   <li class="text-gray-700 py-1 hover:text-blue-500">
                     <nuxt-link  to="/product" class="flex justify-end px-4 border-r-4 border-blue-500">
-                      <span>Shop</span>
+                      <span>Foods</span>
                       <svg class="w-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                     </nuxt-link > 
                   </li>
@@ -34,19 +34,15 @@
                       <svg class="w-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
                     </nuxt-link >       
                   </li>
-                  <span class="block text-gray-700 p-5 font-bold">Categorised Products</span>
+                  <span class="block text-gray-700 p-5 font-bold">Food Menu</span>
+                  <div v-for="category in categories" :key="category.id">
                   <li class="text-gray-700 py-1 hover:text-blue-500">
-                    <nuxt-link  to="/blue" class="flex justify-end px-4 border-r-4 border-blue-500">
-                      <span>Blue</span>
+                    <nuxt-link  :to="{  name: 'category_slug', params: { category_slug: `${ category.slug }` }}" class="flex justify-end px-4 border-r-4 border-blue-500">
+                      <span>{{category.name}}</span>
                       <svg class="w-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
                     </nuxt-link >       
                   </li>
-                  <li class="text-gray-700 py-1 hover:text-red-500">
-                    <nuxt-link  to="/red" class="flex justify-end px-4 border-r-4 border-red-500">
-                      <span>Red</span>
-                      <svg class="w-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-                    </nuxt-link >       
-                  </li>
+                  </div>
               </ul>
           </nav>
       </div>
@@ -76,10 +72,16 @@ export default {
       cart:{
         items:[]
       },
+      categories:[],
     }
   },
   beforeCreate(){
     this.$store.commit('initializeStore')
+  },
+
+  mounted(){
+    this.cart = this.$store.state.cart;
+    this.getCategories();
   },
 
   computed:{
@@ -93,13 +95,35 @@ export default {
   },
   methods:{
     handleClick(){
-        if(this.$refs.menu.classList.contains('hidden')){
-            this.$refs.menu.classList.remove('hidden')
+      if(this.$refs.menu.classList.contains('hidden')){
+          this.$refs.menu.classList.remove('hidden')
+      }
+      else{
+          this.$refs.menu.classList.add('hidden')
+      }
+    },
+    getCategories(){
+      const loadCategories = async () =>{
+        try{
+          //simulate delay 
+          await new Promise (resolve => {
+          setTimeout(resolve, 1000)
+          })
+          
+          let data = await fetch('http://127.0.0.1:8000/api/v1/category-list')
+          if(!data.ok){
+          throw Error('No Data Available')
+          }
+          this.categories = await data.json()
         }
-        else{
-            this.$refs.menu.classList.add('hidden')
+        catch(err){
+          this.error= err.message
+          console.log(err)
         }
+      }
+      loadCategories();
     }
+
   },
 }
 </script>

@@ -19,9 +19,9 @@
               </div>
               <div class="mt-10">
                 <span>
-                  <input type="number" min="1" v-model="quantity" class="border-2 border-gray-500 text-center rounded-full w-14">
+                  <input type="number" min="1" v-model="quantity" class="border-2 border-gray-500 text-center rounded-md w-14">
                 </span>
-                <span class="ml-5 cursor-pointer font-semibold text-xl">
+                <span @click="addToCart" class="ml-5 cursor-pointer font-semibold text-xl">
                   <svg class="w-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                   Buy</span>
               </div>
@@ -65,6 +65,7 @@ export default {
                 throw Error('No Data Available')
                 }
                 this.product = await data.json()
+                document.title = this.product.name +' | VueStore'
             }
             catch(err){
                 this.error= err.message
@@ -72,6 +73,18 @@ export default {
             }
         }
         loadProduct();
+    },
+
+    addToCart() {
+      console.log("added to cart")
+      if(isNaN(this.quantity) || this.quantity < 1) {
+        this.quantity = 1
+      }
+      const item = {
+        product: this.product,
+        quantity: this.quantity
+      }
+      this.$store.commit('addToCart', item)
     }
   }
 }

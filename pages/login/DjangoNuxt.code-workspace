@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\Django\\Rest-Store"
+		},
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\..\\..\\VueJS\\tshirtstore"
+		}
+	],
+	"settings": {}
+}

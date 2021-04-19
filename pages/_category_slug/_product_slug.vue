@@ -26,7 +26,7 @@
                   Buy</span>
               </div>
               <div class="mt-10">
-                <span class="block">{{ product.description }} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti nihil hic alias nam quidem ipsam, optio assumenda ducimus. Illum, doloremque.</span>
+                <span class="block">{{ product.description }}</span>
               </div>
             </div>
           </div>

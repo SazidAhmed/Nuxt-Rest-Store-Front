@@ -16,7 +16,7 @@ export const mutations = {
       localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
-  addToCART(state, item) {
+  addToCart(state, item) {
     const exists = state.cart.items.filter(i => i.product.id === item.product.id)
     if (exists.length) {
       exists[0].quantity = parseInt(exists[0].quantity) + parseInt(item.quantity)
@@ -25,17 +25,17 @@ export const mutations = {
     }
     localStorage.setItem('cart', JSON.stringify(state.cart))
   },
-  incQTY(state, p){
+  incQty(state, p){
     const item = state.cart.items.filter(i => i.product.id === p.product.id)
     item[0].quantity = parseInt(item[0].quantity) + 1;
     localStorage.setItem('cart', JSON.stringify(state.cart))
   },
-  decQTY(state, p){
+  decQty(state, p){
     const item = state.cart.items.filter(i => i.product.id === p.product.id)
     item[0].quantity = parseInt(item[0].quantity) - 1;
     localStorage.setItem('cart', JSON.stringify(state.cart))
   },
-  remCartItem(state, p) {
+  removeFromCart(state, p) {
     state.cart.items = state.cart.items.filter(i => i.product.id !== p.product.id)
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }
@@ -43,18 +43,9 @@ export const mutations = {
 }
 
 export const actions = {
-  addToCart(context, payload){
-    context.commit('addToCART', payload)
-  },
-  incQty(context, payload){
-    context.commit('incQTY', payload)
-  },
-  decQty(context, payload){
-    context.commit('decQTY', payload)
-  },
-  remItem(context, payload){
-    context.commit('remCartItem', payload)
+  incQty:context=>{
+    setTimeout(()=>{
+      context.commit('incQty')
+    })
   }
 }
-
-//use getter and fix item total in navbar

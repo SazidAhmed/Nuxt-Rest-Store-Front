@@ -46,7 +46,7 @@
                   </td>
                   <td class="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
                       <span class="lg:hidden absolute top-3 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-                      <span @click="remCartItem(item)" class="rounded-md py-1 px-2 text-xs font-bold cursor-pointer tracking-wider border-gray-500 md:border-2 text-gray hover:bg-gray-500 hover:text-white transition ease-out duration-500">Remove</span>
+                      <span @click="removeFromCart(item)" class="rounded bg-red-400 py-1 px-3 text-xs font-bold">Remove</span>
                   </td>
               </tr>
           </tbody>
@@ -81,7 +81,7 @@ export default {
     }
   },
   mounted(){
-    document.title = 'NuxtEATS | Cart'
+    document.title = 'Cart | VueStore'
   },
   computed:{
     cart(){
@@ -103,19 +103,22 @@ export default {
       return item.quantity * item.product.price;
     },
     incQty(item){
-      this.$store.dispatch('incQty', item)
+      this.$store.commit('incQty', item)
     },
     decQty(item){
       if(item.quantity == 1){
         console.log('remove from cart')
-        this.$store.dispatch('remItem', item)
+        this.$store.commit('removeFromCart', item)
       }
       else{
-        this.$store.dispatch('decQty', item)
+        this.$store.commit('decQty', item)
       }
     },
-    remCartItem(item) {
-      this.$store.dispatch('remItem', item)
+    updateCart(){
+      localStorage.setItem('cart', JSON.stringify(this.$store.state.cart))
+    },
+    removeFromCart(item) {
+      this.cart.items = this.cart.items.filter(i => i.product.id !== item.product.id)
     }
   }
 }

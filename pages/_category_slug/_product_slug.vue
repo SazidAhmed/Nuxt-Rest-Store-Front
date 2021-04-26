@@ -47,6 +47,11 @@ export default {
   mounted(){
     this.getProduct()
   },
+  watch:{
+    qty(){
+      console.log(this.quantity)
+    }
+  },
   methods:{
     getProduct(){
       const category_slug = this.$route.params.category_slug
@@ -76,7 +81,7 @@ export default {
     },
 
     addToCart() {
-      console.log("added to cart")
+      console.log("added to cart", this.quantity)
       if(isNaN(this.quantity) || this.quantity < 1) {
         this.quantity = 1
       }
@@ -84,7 +89,7 @@ export default {
         product: this.product,
         quantity: this.quantity
       }
-      this.$store.commit('addToCart', item)
+      this.$store.dispatch('addToCart', item)
     }
   }
 }

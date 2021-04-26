@@ -68,7 +68,7 @@
 export default {
   data(){
     return{
-      title:'QL Gadgets',
+      title:'Nuxt Eats',
       cart:{
         items:[]
       },

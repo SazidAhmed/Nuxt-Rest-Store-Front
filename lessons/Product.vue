@@ -29,7 +29,6 @@
                             Details
                         </nuxt-link>
                         <!-- <nuxt-link :to="product.get_absolute_url" class="rounded-full py-1 px-2 text-xs font-bold cursor-pointer tracking-wider border-gray-500 md:border-2 text-gray hover:bg-gray-500 hover:text-white transition ease-out duration-500">
-                            <svg class="w-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                             Details
                         </nuxt-link> -->
                         <!-- <nuxt-link :to="{ name: 'product-category_slug-product_slug', params: {category_slug: 'someCategory', product_slug: 'someProduct'} }">Link to product</nuxt-link> -->

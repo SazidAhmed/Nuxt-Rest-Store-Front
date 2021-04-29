@@ -18,10 +18,10 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="item in cart.items" :key="item.product.id" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+              <tr v-for="(item, index) in cart.items" :key="item.product.id" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                   <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                       <span class="lg:hidden absolute top-3 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Index</span>
-                      01
+                      {{ index+1 }}
                   </td>
                   <td class="w-full lg:w-auto p-3 text-gray-800 border border-b item-center block lg:table-cell relative lg:static">
                       <img :src="item.product.get_thumbnail" alt="image" class="object-cover" style="width:60px; height:60pxl">
@@ -70,6 +70,8 @@
 </template>
 
 <script>
+// vuex
+import { mapState, mapGetters } from 'vuex'
 // components
 import Spinner from '@/components/Spinner.vue'
 export default {
@@ -84,19 +86,8 @@ export default {
     document.title = 'NuxtEATS | Cart'
   },
   computed:{
-    cart(){
-      return this.$store.state.cart
-    },
-    cartTotalLength(){
-      return this.$store.state.cart.items.reduce((acc, curVal)=>{
-        return acc += curVal.quantity
-      },0)
-    },
-    cartTotalPrice(){
-      return this.$store.state.cart.items.reduce((acc, curVal)=>{
-        return acc += curVal.quantity * curVal.product.price
-      },0)
-    }
+    ...mapState(['cart']),
+    ...mapGetters(['cartTotalLength','cartTotalPrice']),    
   },
   methods:{
     getItemTotal(item){

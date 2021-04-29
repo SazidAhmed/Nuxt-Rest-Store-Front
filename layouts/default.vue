@@ -78,6 +78,9 @@ export default {
   beforeCreate(){
     this.$store.commit('initializeStore')
   },
+  // created(){
+  //   this.$store.dispatch('initStore')
+  // },
 
   mounted(){
     this.cart = this.$store.state.cart;
@@ -88,7 +91,7 @@ export default {
     cartTotalLenght(){
       let totalLenght = 0
       for(let i=0; i < this.cart.items.length; i++){
-        totalLenght += this.cart.items[i].quantity
+        totalLenght += parseInt(this.cart.items[i].quantity)
       }
       return totalLenght
     }

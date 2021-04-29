@@ -37,25 +37,25 @@ export default {
   },
   methods:{
     getLatestProducts(){
-         const loadProducts = async () =>{
-            try{
-                //simulate delay 
-                await new Promise (resolve => {
-                setTimeout(resolve, 1000)
-                })
-                
-                let data = await fetch('http://127.0.0.1:8000/api/v1/latest-products')
-                if(!data.ok){
-                throw Error('No Data Available')
-                }
-                this.latestProducts = await data.json()
+      const loadProducts = async () =>{
+        try{
+            //simulate delay 
+            await new Promise (resolve => {
+            setTimeout(resolve, 1000)
+            })
+            
+            let data = await fetch('http://127.0.0.1:8000/api/v1/latest-products')
+            if(!data.ok){
+            throw Error('No Data Available')
             }
-            catch(err){
-                this.error= err.message
-                console.log(err)
-            }
+            this.latestProducts = await data.json()
         }
-        loadProducts();
+        catch(err){
+            this.error= err.message
+            console.log(err)
+        }
+      }
+      loadProducts();
     }
   }
 }

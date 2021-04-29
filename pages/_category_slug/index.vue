@@ -7,7 +7,7 @@
         <div v-if="category.products.length">
           <h4 class="font-bold pt-2 border-b border-gray-200"></h4>
             <div class="mt-8 grid lg:grid-cols-4 gap-10"> 
-                <ProductBox v-for="product in category.products" :key="product.id" :product="product"/>
+                <ProductBox v-for="product in category.products" :key="product.id" :product="product" />
             </div>
         </div>
         <div v-else>
@@ -22,7 +22,7 @@ export default {
   data(){
     return{
         category:{
-            products:[]
+          products:[]
         },
         quantity:1,
     }
@@ -60,18 +60,6 @@ export default {
         }
         loadProduct();
     },
-
-    addToCart() {
-      console.log("added to cart")
-      if(isNaN(this.quantity) || this.quantity < 1) {
-        this.quantity = 1
-      }
-      const item = {
-        product: this.product,
-        quantity: this.quantity
-      }
-      this.$store.commit('addToCart', item)
-    }
   }
 }
 </script>

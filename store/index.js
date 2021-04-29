@@ -7,7 +7,7 @@ export const state = () => ({
     isLoading: false,
 
 })
-  
+//mutations
 export const mutations = {
   initializeStore(state) {
     try {
@@ -39,9 +39,8 @@ export const mutations = {
     state.cart.items = state.cart.items.filter(i => i.product.id !== p.product.id)
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }
-
 }
-
+//async methods
 export const actions = {
   addToCart(context, payload){
     context.commit('addToCART', payload)
@@ -57,4 +56,17 @@ export const actions = {
   }
 }
 
+//computed
+export const getters ={
+  cartTotalLength: state =>{
+    return state.cart.items.reduce((acc, curVal)=>{
+      return acc += parseInt(curVal.quantity)
+    },0)
+  },
+  cartTotalPrice: state =>{
+    return state.cart.items.reduce((acc, curVal)=>{
+      return acc += curVal.quantity * curVal.product.price
+    },0)
+  }
+}
 //use getter and fix item total in navbar

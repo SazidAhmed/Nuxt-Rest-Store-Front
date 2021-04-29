@@ -30,14 +30,14 @@ export default {
 
   },
   mounted(){
-    this.getLatestProducts()
+    this.getAllProducts()
   },
   methods:{
     onClick(id){
         console.log("clicked", id)
         this.$router.push('/product/' + id)
     },
-    getLatestProducts(){
+    getAllProducts(){
          const loadProducts = async () =>{
             try{
                 //simulate delay 
